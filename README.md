@@ -108,6 +108,33 @@ response.getBalanceInfos().forEach(balance -> {
 });
 ```
 
+### Token Counting Example
+
+Calculate how many tokens a text contains using the tokenizer:
+
+```java
+DeepSeekTokenService service = new DeepSeekTokenService();
+
+String prompt = "This is a longer text to test tokenization.";
+int tokenCount = service.calculateTokenCount(prompt);
+System.out.println("Text: \"" + prompt + "\"");
+System.out.println("Token count: " + tokenCount);
+
+// Test multiple texts
+String[] testTexts = {
+    "Hello!",
+    "Hello, world!",
+    "This is a longer text to test tokenization.",
+    "Dieser Text enthält deutsche Wörter.",
+    "这是一个中文测试。"
+};
+
+for (String text : testTexts) {
+    int tokens = service.calculateTokenCount(text);
+    System.out.printf("\"%s\" -> %d tokens%n", text, tokens);
+}
+```
+
 See the `deepseek4j-examples` module for more demonstrations including base64 images, structured outputs, and thinking mode.
 
 ### Configuring the Client
